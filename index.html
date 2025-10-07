@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mojang/Minecraft Services Status Checker">
+    <meta name="theme-color" content="#3b82f6">
+    <title>🎮 Mojang Status Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <span class="theme-icon">🌙</span>
+            <span class="theme-text">Light</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1 class="title">🎮 Mojang Status Checker</h1>
+            <p class="subtitle">Real-time monitoring of all Mojang/Minecraft services</p>
+        </header>
+
+        <!-- Quick Stats -->
+        <div class="grid" style="margin-bottom: 2rem;">
+            <div class="metric-card">
+                <div class="metric-value" id="total-services">-</div>
+                <div class="metric-label">Total Services</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="online-services" style="color: var(--success);">-</div>
+                <div class="metric-label">Online</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="offline-services" style="color: var(--danger);">-</div>
+                <div class="metric-label">Offline/Issues</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="mc-version">-</div>
+                <div class="metric-label">Latest MC Version</div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="card" style="margin-bottom: 2rem;">
+            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; justify-content: space-between;">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary" id="check-status-btn">
+                        🔄 Check Status
+                    </button>
+                    <button class="btn btn-secondary" id="auto-refresh-btn">
+                        ⏱️ Auto-refresh: OFF
+                    </button>
+                    <button class="btn btn-secondary" id="export-btn">
+                        💾 Export Results
+                    </button>
+                </div>
+                <div style="color: var(--text-secondary); font-size: 0.875rem;">
+                    <span id="last-check">Never checked</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Categories -->
+        <div id="status-container">
+            <!-- Status results will be inserted here -->
+        </div>
+
+        <!-- Legend -->
+        <div class="card">
+            <h3>📋 Status Legend</h3>
+            <div class="grid">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span style="font-size: 1.5rem;">✅</span>
+                    <div>
+                        <div style="font-weight: 600; color: var(--text-primary);">ONLINE</div>
+                        <div style="font-size: 0.875rem; color: var(--text-muted);">Service is fully operational</div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span style="font-size: 1.5rem;">⚠️</span>
+                    <div>
+                        <div style="font-weight: 600; color: var(--text-primary);">ISSUES</div>
+                        <div style="font-size: 0.875rem; color: var(--text-muted);">Service responding with unexpected status</div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span style="font-size: 1.5rem;">❌</span>
+                    <div>
+                        <div style="font-weight: 600; color: var(--text-primary);">OFFLINE/ERROR</div>
+                        <div style="font-size: 0.875rem; color: var(--text-muted);">Service is not responding or has errors</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
